@@ -38,9 +38,7 @@
 
 E-commerce search ranking is a two-stage problem — retrieve a candidate set, then rank it — and each stage has a different failure mode: retrieval determines the *ceiling* (a reranker can't recover a product that was never retrieved), ranking determines how well that ceiling gets realized in the top of the page. RankLab builds and measures both stages on real data (Amazon's ESCI Shopping Queries dataset), then asks two further questions on top: does automated LLM assistance (query rewriting, relevance judging) measurably help, and does a synthetic A/B experiment framework correctly avoid the standard statistical traps (peeking early, uncorrected multiple comparisons, unexplained variance)?
 
-> **RankLab's core search pipeline (retrieval → features → ranking) is fully offline and local — no API, no hosted LLM, no backend service in that path.** The deliberate exceptions are Steps 9 and 10's LLM studies (query rewriting and relevance judging), which use the Groq API for generation (a documented deviation from this project's original manual-only design — see [GPT/automated LLM studies](#gptautomated-llm-studies-steps-9-10) below and `reports/results_log.md`'s 2026-08-19 methodology-change entries for the full reasoning). Results from those studies are labeled by their actual provenance, not presented as either "manual GPT" or as a scalable online system. Steps 11-12's experiment simulator is entirely local and, separately, entirely synthetic — every result there is explicitly labeled as simulated, not a claim about real customer behavior.
-
-Dated experiment log, the authoritative source for every number in this README: [`reports/results_log.md`](reports/results_log.md).
+> **RankLab's core search pipeline (retrieval → features → ranking) is fully offline and local — no API, no hosted LLM, no backend service in that path.** The deliberate exceptions are Steps 9 and 10's LLM studies (query rewriting and relevance judging), which use the Groq API for generation (a documented deviation from this project's original manual-only design — see [GPT/automated LLM studies](#gptautomated-llm-studies-steps-9-10) below). Results from those studies are labeled by their actual provenance, not presented as either "manual GPT" or as a scalable online system. Steps 11-12's experiment simulator is entirely local and, separately, entirely synthetic — every result there is explicitly labeled as simulated, not a claim about real customer behavior.
 
 **Status:** Steps 1-12 of a 13-step build plan are done (data prep, retrieval, ranking, both LLM studies, and the synthetic experiment simulator); Step 13 (packaging/demo) is this README, `app.py`, and the run_all guide below.
 
@@ -48,7 +46,7 @@ Dated experiment log, the authoritative source for every number in this README: 
 
 Amazon [ESCI Shopping Queries dataset](https://github.com/amazon-science/esci-data), US locale, `small_version=1` slice. 601,354 judgment rows, 29,844 queries, split 70/15/15 by `query_id` (seed=42, stratified by query-level mean relevance) so no query leaks across train/validation/test.
 
-Catalogue: full 482,105-product US catalogue. A smaller 164,006-product reduction was used temporarily for Steps 4-5 (local GPU, GTX 1650 4.3GB, made full-catalogue dense embedding impractical to iterate on at first) but was unified back to the full catalogue before Step 6 — a 164k-only catalogue left 38.6% of train queries with zero relevant-product coverage, unusable for LambdaMART training. Full story: `reports/results_log.md`, "Catalogue unified back to full 482k" entry.
+Catalogue: full 482,105-product US catalogue. A smaller 164,006-product reduction was used temporarily for Steps 4-5 (local GPU, GTX 1650 4.3GB, made full-catalogue dense embedding impractical to iterate on at first) but was unified back to the full catalogue before Step 6, since a 164k-only catalogue left 38.6% of train queries with zero relevant-product coverage, which is unusable for LambdaMART training.
 
 The raw dataset (`esci-data/`) and all derived data/pipeline artifacts (`data/`, `artifacts/`) are **not** committed to this repo — see `.gitignore` and the run_all guide below. They're multi-gigabyte and fully regeneratable; only the code, configs, small measured-result summaries (`reports/`), and the LLM-study data (`manual_gpt/`) are tracked.
 
@@ -97,7 +95,7 @@ Then download the ESCI parquet files into `esci-data/shopping_queries_dataset/` 
 **2. One-time data prep** — notebooks, in order, build `data/processed/` and `artifacts/indexes/` from the raw dataset:
 `01_eda_data_inspection.ipynb` → `02_retrieval_baseline.ipynb` → `03_dense_embeddings.ipynb` → `04_retrieval_index_benchmark.ipynb`
 
-> Step 3 (dense embeddings) is the slow one — expect anywhere from ~10 minutes to a few hours depending on your GPU, since it's encoding hundreds of thousands of products. See `reports/results_log.md` if you hit memory constraints on a smaller GPU; the notebook documents the exact workaround used here (encoding in a reduced-catalogue pass first, then filling in the rest).
+> Step 3 (dense embeddings) is the slow one — expect anywhere from ~10 minutes to a few hours depending on your GPU, since it's encoding hundreds of thousands of products. If you hit memory constraints on a smaller GPU, the notebook documents a workaround: encode a reduced catalogue first, then fill in the rest.
 
 **3. Core pipeline**
 ```bash
@@ -137,9 +135,9 @@ Pick an example query or type your own; shows BM25/dense/LambdaMART top-10 side 
 - **BM25** (`bm25s`, over title+brand+bullets+color), full 482k catalogue: Recall@100 0.460, NDCG@10 0.311, MRR@10 0.553 (`src/retrieval.py`).
 - **Dense** (`BAAI/bge-base-en-v1.5`, 768-dim), full 482k catalogue: FlatIP (exact) Recall@100 0.509, p95 latency 75.3ms. **Chosen index: HNSW M=64, efSearch=256** — Recall@100 0.500 (98.2% of exact), p95 latency **4.5ms (~16.7x faster than exact search at this scale)**, 1.7GB index.
 
-**Why HNSW over FlatIP:** every benchmarked configuration cleared any reasonable latency/memory budget trivially at this catalogue size — the recall/latency/memory trade-off the exercise is meant to surface doesn't actually bind at 482k vectors. HNSW was chosen anyway, over FlatIP, to demonstrate the approximate-nearest-neighbor operating-point methodology that becomes load-bearing at production scale (millions of vectors), not because FlatIP was too slow here. IVF-PQ skipped: no memory pressure to solve. Config-selection grid (`reports/retrieval_benchmark.csv`) was run at the intermediate 164k catalogue as an initial screen; the *chosen* configuration was then re-validated at the full 482k scale (see `reports/results_log.md`) rather than re-running the entire 12-config grid a second time at full scale.
+**Why HNSW over FlatIP:** every benchmarked configuration cleared any reasonable latency/memory budget trivially at this catalogue size — the recall/latency/memory trade-off the exercise is meant to surface doesn't actually bind at 482k vectors. HNSW was chosen anyway, over FlatIP, to demonstrate the approximate-nearest-neighbor operating-point methodology that becomes load-bearing at production scale (millions of vectors), not because FlatIP was too slow here. IVF-PQ skipped: no memory pressure to solve. The config-selection grid (`reports/retrieval_benchmark.csv`) was run at the intermediate 164k catalogue as an initial screen; the *chosen* configuration was then re-validated at the full 482k scale rather than re-running the entire 12-config grid a second time.
 
-Dense retrieval beats BM25 on every metric — expected from BM25's own failure analysis (`reports/results_log.md`, Step 3 entry), which found BM25's dominant failure mode is negation ("trash can *without* lid" retrieves cans *with* lids) and lexical/synonym gaps dense embeddings are structurally built to catch.
+Dense retrieval beats BM25 on every metric, which lines up with BM25's own failure analysis: its dominant failure mode is negation ("trash can *without* lid" retrieves cans *with* lids) and lexical/synonym gaps that dense embeddings are structurally built to catch.
 
 ### Ranking
 
@@ -154,11 +152,11 @@ LightGBM `LGBMRanker` (`lambdarank` objective) on 14 hand-built features (`src/f
 | Naive candidate-union (normalized score sum) | 0.210 | 0.337 | 0.590 |
 | **LambdaMART** | **0.224** | **0.365** | **0.613** |
 
-LambdaMART beats BM25 by +18.5% relative NDCG@10, and — the more meaningful comparison — beats the naive union baseline by +8.3%, showing the *learned* feature combination adds value beyond just summing the two retrieval signals. One custom feature, `negation_conflict_flag`, directly operationalizes the BM25 negation failure found in Step 3 and shows real negative correlation with relevance (-0.10) and real usage in the trained model (195 tree splits) — not just a theoretical addition. Full writeup: `reports/results_log.md`, Step 8 entry.
+LambdaMART beats BM25 by +18.5% relative NDCG@10, and — the more meaningful comparison — beats the naive union baseline by +8.3%, showing the *learned* feature combination adds value beyond just summing the two retrieval signals. One custom feature, `negation_conflict_flag`, directly operationalizes the BM25 negation failure found earlier and shows real negative correlation with relevance (-0.10) and real usage in the trained model (195 tree splits) — not just a theoretical addition.
 
 ## GPT/automated LLM studies (Steps 9-10)
 
-Both studies use the Groq API (`openai/gpt-oss-120b`) for generation rather than a manual GPT chat interface — the user's explicit choice for speed, shown the trade-off each time (`reports/results_log.md` has the full reasoning for both). The model was originally meant to be Llama; Groq no longer hosts a general-purpose Llama chat model (confirmed live against Groq's `/models` endpoint), so it's `gpt-oss-120b` throughout, and every row's `model_label` records the actual model string used — never silently mislabeled.
+Both studies use the Groq API (`openai/gpt-oss-120b`) for generation rather than a manual GPT chat interface, the user's explicit choice for speed after weighing the trade-off. The model was originally meant to be Llama; Groq no longer hosts a general-purpose Llama chat model (confirmed live against Groq's `/models` endpoint), so it's `gpt-oss-120b` throughout, and every row's `model_label` records the actual model string used — never silently mislabeled.
 
 **Step 9 — query rewrite.** 150 held-out short queries (test-split, 1-2 tokens) sampled and frozen (`manual_gpt/rewrite_study_query_ids.csv`) *before* any generation. Fixed prompt: `manual_gpt/prompts/rewrite_v1.md`. Raw output preserved unedited in `manual_gpt/query_rewrites.csv`. Human review pass (accept/edit/reject) preserved — 120/150 were unchanged rewrites (nothing to review, since nothing was altered), 30/150 genuinely reviewed and accepted. Evaluated with paired local retrieval (raw vs. reviewed query) + bootstrap CI (2,000 resamples):
 
@@ -182,7 +180,7 @@ Three arms — A=BM25, B=LambdaMART, C=LambdaMART+rewrite-policy — compared vi
 <img src="reports/figures/cuped_comparison.png" alt="CUPED variance reduction" width="410">
 </p>
 
-Sanity checkpoint passed (CTR rises with relevance strength: A < B ≈ C). Both B and C beat A with real effect sizes (+4.6pp / +6.3pp CTR, 95% CIs exclude zero, BH-significant in **100/100** stability seeds — not a fluke). B-vs-C's CI includes zero and is correctly *not* claimed as a real difference. Sequential O'Brien-Fleming testing correctly declines to stop early even when a naive unadjusted p-value dips below 0.05 partway through (25% info fraction), and CUPED reduces variance ~15-16%. Full writeup, decision table: `reports/results_log.md` (Steps 11+12 entry), `reports/experiment_decision_table.csv`.
+Sanity checkpoint passed (CTR rises with relevance strength: A < B ≈ C). Both B and C beat A with real effect sizes (+4.6pp / +6.3pp CTR, 95% CIs exclude zero, BH-significant in **100/100** stability seeds — not a fluke). B-vs-C's CI includes zero and is correctly *not* claimed as a real difference. Sequential O'Brien-Fleming testing correctly declines to stop early even when a naive unadjusted p-value dips below 0.05 partway through (25% info fraction), and CUPED reduces variance ~15-16%. Full decision table: `reports/experiment_decision_table.csv`.
 
 ## Limitations
 

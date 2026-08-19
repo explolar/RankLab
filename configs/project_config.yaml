@@ -22,8 +22,8 @@ embedding_model:
   max_length: 512
 
 # Step 11/12 synthetic experiment. These are modelling assumptions, not observed
-# customer behaviour -- see reports/results_log.md (Steps 11+12 entry) for the
-# explicit "clicks are simulated" framing this config exists to make auditable.
+# customer behaviour -- every downstream chart is explicitly labeled
+# "SYNTHETIC CLICK SIMULATION" so this config's role stays auditable.
 simulation:
   top_n: 10
   # P(attract | relevance grade). Monotonic increasing by construction (0 < 1 < 2 < 3).

@@ -1,5 +1,6 @@
-# Internal planning/dev-process doc, not for the public repo
+# Internal planning/dev-process docs, not for the public repo
 RankLab_Project_Plan.md
+reports/results_log.md
 
 # Third-party dataset repo (cloned separately, has its own git history --
 # see README "Data setup" for the clone command). Never vendor this in.
