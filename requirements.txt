@@ -1,0 +1,18 @@
+pandas>=2.3
+numpy>=2.3
+pyarrow>=22.0
+pyyaml>=6.0
+matplotlib>=3.10
+seaborn>=0.13
+scikit-learn>=1.8
+bm25s>=0.3
+faiss-cpu>=1.15
+sentence-transformers>=6.0
+# torch: CPU wheel installs by default via pip. For GPU (CUDA), follow
+# https://pytorch.org/get-started/locally/ for the right command for your hardware.
+torch>=2.11
+lightgbm>=4.6
+shap>=0.50
+rapidfuzz>=3.14
+requests>=2.32
+streamlit>=1.52

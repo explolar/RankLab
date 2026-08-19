@@ -1,0 +1,901 @@
+query_id,raw_query,prompt_version,raw_gpt_response,expanded_query_gpt,intent_gpt,category_gpt,uncertainty_gpt,review_decision,reviewed_query,review_reason,model_label,run_date,minutes_spent,parse_status
+6033,aarakocra miniature,rewrite_v1,"{
+  ""expanded_query"": ""aarakocra miniature"",
+  ""intent"": ""transactional"",
+  ""category"": ""miniatures"",
+  ""uncertainty"": ""low""
+}",aarakocra miniature,transactional,miniatures,low,accept,aarakocra miniature,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:41.898638+00:00,,valid
+7250,air buds,rewrite_v1,"{
+  ""expanded_query"": ""air buds"",
+  ""intent"": ""transactional"",
+  ""category"": ""earbuds"",
+  ""uncertainty"": ""low""
+}",air buds,transactional,earbuds,low,accept,air buds,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:42.997606+00:00,,valid
+7328,air guns,rewrite_v1,"{
+  ""expanded_query"": ""air guns"",
+  ""intent"": ""transactional"",
+  ""category"": ""air guns"",
+  ""uncertainty"": ""low""
+}",air guns,transactional,air guns,low,accept,air guns,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:43.960707+00:00,,valid
+7531,airpod2 wireless,rewrite_v1,"{
+  ""expanded_query"": ""AirPod 2 wireless"",
+  ""intent"": ""transactional"",
+  ""category"": ""wireless earbuds"",
+  ""uncertainty"": ""low""
+}",AirPod 2 wireless,transactional,wireless earbuds,low,accept,AirPod 2 wireless,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:45.023339+00:00,,valid
+8168,allen mandelbaum,rewrite_v1,"{
+  ""expanded_query"": ""Allen Mandelbaum"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Allen Mandelbaum,informational,unknown,high,accept,allen mandelbaum,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:46.167253+00:00,,valid
+8373,alto flute,rewrite_v1,"{
+  ""expanded_query"": ""alto flute"",
+  ""intent"": ""transactional"",
+  ""category"": ""musical instruments"",
+  ""uncertainty"": ""low""
+}",alto flute,transactional,musical instruments,low,accept,alto flute,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:47.287622+00:00,,valid
+9207,anime bedding,rewrite_v1,"{
+  ""expanded_query"": ""anime themed bedding"",
+  ""intent"": ""transactional"",
+  ""category"": ""bedding"",
+  ""uncertainty"": ""low""
+}",anime themed bedding,transactional,bedding,low,accept,anime themed bedding,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:48.224867+00:00,,valid
+11032,attrition cd,rewrite_v1,"{
+  ""expanded_query"": ""Attrition CD"",
+  ""intent"": ""informational"",
+  ""category"": ""music album (CD)"",
+  ""uncertainty"": ""medium""
+}",Attrition CD,informational,music album (CD),medium,accept,attrition cd,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:49.304277+00:00,,valid
+11538,axio calm,rewrite_v1,"{
+  ""expanded_query"": ""axio calm"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""medium""
+}",axio calm,transactional,unknown,medium,accept,axio calm,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:50.422292+00:00,,valid
+11628,b-perky,rewrite_v1,"{
+  ""expanded_query"": ""b-perky"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",b-perky,transactional,unknown,high,accept,b-perky,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:51.649147+00:00,,valid
+11632,b000ap7v1q,rewrite_v1,"{
+  ""expanded_query"": ""b000ap7v1q"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",b000ap7v1q,transactional,unknown,high,accept,b000ap7v1q,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:52.792874+00:00,,valid
+11683,b52,rewrite_v1,"{
+  ""expanded_query"": ""B52"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",B52,informational,unknown,high,accept,b52,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:54.232891+00:00,,valid
+11900,baby doppler,rewrite_v1,"{
+  ""expanded_query"": ""baby doppler"",
+  ""intent"": ""transactional"",
+  ""category"": ""fetal doppler"",
+  ""uncertainty"": ""low""
+}",baby doppler,transactional,fetal doppler,low,accept,baby doppler,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:55.441320+00:00,,valid
+12415,backdrop,rewrite_v1,"{
+  ""expanded_query"": ""backdrop"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",backdrop,transactional,unknown,high,accept,backdrop,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:56.643211+00:00,,valid
+12503,backwash connector,rewrite_v1,"{
+  ""expanded_query"": ""backwash connector"",
+  ""intent"": ""transactional"",
+  ""category"": ""pool equipment"",
+  ""uncertainty"": ""low""
+}",backwash connector,transactional,pool equipment,low,accept,backwash connector,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:57.768852+00:00,,valid
+12915,banana phone,rewrite_v1,"{
+  ""expanded_query"": ""banana phone"",
+  ""intent"": ""transactional"",
+  ""category"": ""phones"",
+  ""uncertainty"": ""medium""
+}",banana phone,transactional,phones,medium,accept,banana phone,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:58.875316+00:00,,valid
+14731,behringer headphone,rewrite_v1,"{
+  ""expanded_query"": ""Behringer headphones"",
+  ""intent"": ""transactional"",
+  ""category"": ""headphones"",
+  ""uncertainty"": ""low""
+}",Behringer headphones,transactional,headphones,low,accept,Behringer headphones,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:23:59.840117+00:00,,valid
+17185,block table,rewrite_v1,"{
+  ""expanded_query"": ""block table"",
+  ""intent"": ""transactional"",
+  ""category"": ""tables"",
+  ""uncertainty"": ""high""
+}",block table,transactional,tables,high,accept,block table,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:01.111254+00:00,,valid
+18307,boogie scooper,rewrite_v1,"{
+  ""expanded_query"": ""boogie scooper"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",boogie scooper,informational,unknown,high,accept,boogie scooper,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:02.306318+00:00,,valid
+19879,broadway hd,rewrite_v1,"{
+  ""expanded_query"": ""Broadway HD"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""medium""
+}",Broadway HD,informational,unknown,medium,accept,broadway hd,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:03.532028+00:00,,valid
+20419,build miniatures,rewrite_v1,"{
+  ""expanded_query"": ""build miniatures"",
+  ""intent"": ""informational"",
+  ""category"": ""miniatures"",
+  ""uncertainty"": ""medium""
+}",build miniatures,informational,miniatures,medium,accept,build miniatures,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:04.699448+00:00,,valid
+20845,butter bronzer,rewrite_v1,"{
+  ""expanded_query"": ""butter bronzer"",
+  ""intent"": ""transactional"",
+  ""category"": ""bronzer"",
+  ""uncertainty"": ""low""
+}",butter bronzer,transactional,bronzer,low,accept,butter bronzer,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:05.898349+00:00,,valid
+21382,cajun seasoning,rewrite_v1,"{
+  ""expanded_query"": ""cajun seasoning"",
+  ""intent"": ""transactional"",
+  ""category"": ""spices & seasonings"",
+  ""uncertainty"": ""low""
+}",cajun seasoning,transactional,spices & seasonings,low,accept,cajun seasoning,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:06.874236+00:00,,valid
+24664,challenger k1,rewrite_v1,"{
+  ""expanded_query"": ""Challenger K1"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Challenger K1,transactional,unknown,high,accept,challenger k1,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:08.031949+00:00,,valid
+25034,charred food,rewrite_v1,"{
+  ""expanded_query"": ""charred food"",
+  ""intent"": ""informational"",
+  ""category"": ""food"",
+  ""uncertainty"": ""high""
+}",charred food,informational,food,high,accept,charred food,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:09.239158+00:00,,valid
+25752,chocolate sweets,rewrite_v1,"{
+  ""expanded_query"": ""chocolate sweets"",
+  ""intent"": ""transactional"",
+  ""category"": ""confectionery"",
+  ""uncertainty"": ""low""
+}",chocolate sweets,transactional,confectionery,low,accept,chocolate sweets,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:10.228483+00:00,,valid
+27175,coaching confidence,rewrite_v1,"{
+  ""expanded_query"": ""confidence coaching"",
+  ""intent"": ""informational"",
+  ""category"": ""coaching"",
+  ""uncertainty"": ""high""
+}",confidence coaching,informational,coaching,high,accept,confidence coaching,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:11.117373+00:00,,valid
+28131,command shelfs,rewrite_v1,"{
+  ""expanded_query"": ""command shelves"",
+  ""intent"": ""transactional"",
+  ""category"": ""shelves"",
+  ""uncertainty"": ""medium""
+}",command shelves,transactional,shelves,medium,accept,command shelves,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:12.405753+00:00,,valid
+28323,computer,rewrite_v1,"{
+  ""expanded_query"": ""computer"",
+  ""intent"": ""transactional"",
+  ""category"": ""computers"",
+  ""uncertainty"": ""high""
+}",computer,transactional,computers,high,accept,computer,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:13.378670+00:00,,valid
+28847,cooler master אם'קר,rewrite_v1,"{
+  ""expanded_query"": ""Cooler Master"",
+  ""intent"": ""transactional"",
+  ""category"": ""computer hardware"",
+  ""uncertainty"": ""medium""
+}",Cooler Master,transactional,computer hardware,medium,accept,Cooler Master,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:14.584732+00:00,,valid
+30019,creme fraiche,rewrite_v1,"{
+  ""expanded_query"": ""creme fraiche"",
+  ""intent"": ""transactional"",
+  ""category"": ""creme fraiche"",
+  ""uncertainty"": ""low""
+}",creme fraiche,transactional,creme fraiche,low,accept,creme fraiche,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:17.126474+00:00,,valid
+30063,crewneck sweatshirt,rewrite_v1,"{
+  ""expanded_query"": ""crewneck sweatshirt"",
+  ""intent"": ""transactional"",
+  ""category"": ""sweatshirts"",
+  ""uncertainty"": ""low""
+}",crewneck sweatshirt,transactional,sweatshirts,low,accept,crewneck sweatshirt,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:19.403792+00:00,,valid
+30099,cricut basswood,rewrite_v1,"{
+  ""expanded_query"": ""Cricut basswood"",
+  ""intent"": ""transactional"",
+  ""category"": ""craft supplies"",
+  ""uncertainty"": ""low""
+}",Cricut basswood,transactional,craft supplies,low,accept,cricut basswood,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:21.858074+00:00,,valid
+30101,cricut create,rewrite_v1,"{
+  ""expanded_query"": ""Cricut Create"",
+  ""intent"": ""transactional"",
+  ""category"": ""craft cutting machine"",
+  ""uncertainty"": ""low""
+}",Cricut Create,transactional,craft cutting machine,low,accept,cricut create,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:24.356527+00:00,,valid
+30327,cross trainer,rewrite_v1,"{
+  ""expanded_query"": ""cross trainer"",
+  ""intent"": ""transactional"",
+  ""category"": ""elliptical trainer"",
+  ""uncertainty"": ""low""
+}",cross trainer,transactional,elliptical trainer,low,accept,cross trainer,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:26.885629+00:00,,valid
+30462,cs,rewrite_v1,"{
+  ""expanded_query"": ""cs"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",cs,informational,unknown,high,accept,cs,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:29.537999+00:00,,valid
+30897,cushion grip,rewrite_v1,"{
+  ""expanded_query"": ""cushion grip"",
+  ""intent"": ""transactional"",
+  ""category"": ""cushion accessories"",
+  ""uncertainty"": ""medium""
+}",cushion grip,transactional,cushion accessories,medium,accept,cushion grip,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:31.814410+00:00,,valid
+31804,dbxing,rewrite_v1,"{
+  ""expanded_query"": ""dbxing"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",dbxing,transactional,unknown,high,accept,dbxing,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:34.331390+00:00,,valid
+32479,dermaplane glo,rewrite_v1,"{
+  ""expanded_query"": ""Dermaplane Glo product"",
+  ""intent"": ""transactional"",
+  ""category"": ""beauty tools"",
+  ""uncertainty"": ""medium""
+}",Dermaplane Glo product,transactional,beauty tools,medium,accept,Dermaplane Glo product,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:37.159382+00:00,,valid
+32836,dewalt flexvolt,rewrite_v1,"{
+  ""expanded_query"": ""DeWalt FlexVolt"",
+  ""intent"": ""transactional"",
+  ""category"": ""power tools"",
+  ""uncertainty"": ""low""
+}",DeWalt FlexVolt,transactional,power tools,low,accept,dewalt flexvolt,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:40.090795+00:00,,valid
+34080,dk space,rewrite_v1,"{
+  ""expanded_query"": ""DK Space"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",DK Space,informational,unknown,high,accept,dk space,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:42.951596+00:00,,valid
+34530,dog rug,rewrite_v1,"{
+  ""expanded_query"": ""dog rug"",
+  ""intent"": ""transactional"",
+  ""category"": ""rugs"",
+  ""uncertainty"": ""low""
+}",dog rug,transactional,rugs,low,accept,dog rug,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:45.516281+00:00,,valid
+34913,dorm appliances,rewrite_v1,"{
+  ""expanded_query"": ""appliances for dorm rooms"",
+  ""intent"": ""transactional"",
+  ""category"": ""appliances"",
+  ""uncertainty"": ""low""
+}",appliances for dorm rooms,transactional,appliances,low,accept,appliances for dorm rooms,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:48.076326+00:00,,valid
+36500,easy hold,rewrite_v1,"{
+  ""expanded_query"": ""easy hold"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",easy hold,transactional,unknown,high,accept,easy hold,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:50.562443+00:00,,valid
+36827,ego charger,rewrite_v1,"{
+  ""expanded_query"": ""ego charger"",
+  ""intent"": ""transactional"",
+  ""category"": ""charger"",
+  ""uncertainty"": ""low""
+}",ego charger,transactional,charger,low,accept,ego charger,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:53.119621+00:00,,valid
+37666,enema bottles,rewrite_v1,"{
+  ""expanded_query"": ""enema bottles"",
+  ""intent"": ""transactional"",
+  ""category"": ""medical supplies"",
+  ""uncertainty"": ""low""
+}",enema bottles,transactional,medical supplies,low,accept,enema bottles,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:55.632944+00:00,,valid
+37740,english saddle,rewrite_v1,"{
+  ""expanded_query"": ""English saddle"",
+  ""intent"": ""transactional"",
+  ""category"": ""Saddles"",
+  ""uncertainty"": ""low""
+}",English saddle,transactional,Saddles,low,accept,english saddle,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:24:58.046771+00:00,,valid
+38449,european nutella,rewrite_v1,"{
+  ""expanded_query"": ""Nutella chocolate hazelnut spread sold in Europe"",
+  ""intent"": ""transactional"",
+  ""category"": ""food spreads"",
+  ""uncertainty"": ""medium""
+}",Nutella chocolate hazelnut spread sold in Europe,transactional,food spreads,medium,accept,Nutella chocolate hazelnut spread sold in Europe,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:00.627524+00:00,,valid
+38686,exploring magnets,rewrite_v1,"{
+  ""expanded_query"": ""magnets"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",magnets,informational,unknown,high,accept,magnets,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:02.777607+00:00,,valid
+38714,extendable straw,rewrite_v1,"{
+  ""expanded_query"": ""extendable straw"",
+  ""intent"": ""transactional"",
+  ""category"": ""straws"",
+  ""uncertainty"": ""low""
+}",extendable straw,transactional,straws,low,accept,extendable straw,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:05.241128+00:00,,valid
+38861,extraction press,rewrite_v1,"{
+  ""expanded_query"": ""extraction press"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",extraction press,transactional,unknown,high,accept,extraction press,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:07.773843+00:00,,valid
+39087,fabric,rewrite_v1,"{
+  ""expanded_query"": ""fabric"",
+  ""intent"": ""informational"",
+  ""category"": ""fabric"",
+  ""uncertainty"": ""high""
+}",fabric,informational,fabric,high,accept,fabric,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:10.438258+00:00,,valid
+39371,fake medals,rewrite_v1,"{
+  ""expanded_query"": ""fake medals"",
+  ""intent"": ""transactional"",
+  ""category"": ""medals"",
+  ""uncertainty"": ""low""
+}",fake medals,transactional,medals,low,accept,fake medals,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:12.991738+00:00,,valid
+39476,fall truck,rewrite_v1,"{
+  ""expanded_query"": ""fall truck"",
+  ""intent"": ""transactional"",
+  ""category"": ""truck"",
+  ""uncertainty"": ""high""
+}",fall truck,transactional,truck,high,accept,fall truck,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:15.500470+00:00,,valid
+40396,fingerboard,rewrite_v1,"{
+  ""expanded_query"": ""fingerboard"",
+  ""intent"": ""transactional"",
+  ""category"": ""fingerboards"",
+  ""uncertainty"": ""low""
+}",fingerboard,transactional,fingerboards,low,accept,fingerboard,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:18.059849+00:00,,valid
+40567,fireplace stockings,rewrite_v1,"{
+  ""expanded_query"": ""fireplace stockings"",
+  ""intent"": ""transactional"",
+  ""category"": ""fireplace stockings"",
+  ""uncertainty"": ""medium""
+}",fireplace stockings,transactional,fireplace stockings,medium,accept,fireplace stockings,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:20.498363+00:00,,valid
+40747,fishing knife,rewrite_v1,"{
+  ""expanded_query"": ""fishing knife"",
+  ""intent"": ""transactional"",
+  ""category"": ""knives"",
+  ""uncertainty"": ""low""
+}",fishing knife,transactional,knives,low,accept,fishing knife,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:22.872292+00:00,,valid
+40749,fishing likes,rewrite_v1,"{
+  ""expanded_query"": ""fishing likes"",
+  ""intent"": ""informational"",
+  ""category"": ""fishing"",
+  ""uncertainty"": ""high""
+}",fishing likes,informational,fishing,high,accept,fishing likes,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:25.311634+00:00,,valid
+41152,flavor ice,rewrite_v1,"{
+  ""expanded_query"": ""flavor ice"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""medium""
+}",flavor ice,informational,unknown,medium,accept,flavor ice,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:27.647158+00:00,,valid
+41539,flowerarrangement,rewrite_v1,"{
+  ""expanded_query"": ""flower arrangement"",
+  ""intent"": ""transactional"",
+  ""category"": ""flower arrangements"",
+  ""uncertainty"": ""medium""
+}",flower arrangement,transactional,flower arrangements,medium,accept,flower arrangement,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:29.960440+00:00,,valid
+41899,food,rewrite_v1,"{
+  ""expanded_query"": ""food"",
+  ""intent"": ""informational"",
+  ""category"": ""food"",
+  ""uncertainty"": ""high""
+}",food,informational,food,high,accept,food,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:32.637857+00:00,,valid
+42179,formal cape,rewrite_v1,"{
+  ""expanded_query"": ""formal cape"",
+  ""intent"": ""transactional"",
+  ""category"": ""capes"",
+  ""uncertainty"": ""low""
+}",formal cape,transactional,capes,low,accept,formal cape,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:35.026087+00:00,,valid
+42856,frozen theme,rewrite_v1,"{
+  ""expanded_query"": ""frozen theme"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",frozen theme,informational,unknown,high,accept,frozen theme,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:37.522474+00:00,,valid
+43826,gacha life,rewrite_v1,"{
+  ""expanded_query"": ""Gacha Life game"",
+  ""intent"": ""informational"",
+  ""category"": ""mobile video game"",
+  ""uncertainty"": ""low""
+}",Gacha Life game,informational,mobile video game,low,accept,Gacha Life game,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:40.122853+00:00,,valid
+44437,gardening hat,rewrite_v1,"{
+  ""expanded_query"": ""gardening hat"",
+  ""intent"": ""transactional"",
+  ""category"": ""gardening hats"",
+  ""uncertainty"": ""low""
+}",gardening hat,transactional,gardening hats,low,accept,gardening hat,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:42.582211+00:00,,valid
+44822,gemini ailer,rewrite_v1,"{
+  ""expanded_query"": ""Gemini Ailer"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""medium""
+}",Gemini Ailer,transactional,unknown,medium,accept,gemini ailer,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:45.467975+00:00,,valid
+46097,glowstrike darts,rewrite_v1,"{
+  ""expanded_query"": ""glowstrike darts"",
+  ""intent"": ""transactional"",
+  ""category"": ""darts"",
+  ""uncertainty"": ""low""
+}",glowstrike darts,transactional,darts,low,accept,glowstrike darts,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:48.048201+00:00,,valid
+47297,green dissolve,rewrite_v1,"{
+  ""expanded_query"": ""green dissolve"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",green dissolve,informational,unknown,high,accept,green dissolve,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:53.163434+00:00,,valid
+47506,grey sweater,rewrite_v1,"{
+  ""expanded_query"": ""grey sweater"",
+  ""intent"": ""transactional"",
+  ""category"": ""Sweater"",
+  ""uncertainty"": ""low""
+}",grey sweater,transactional,Sweater,low,accept,grey sweater,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:54.200857+00:00,,valid
+47538,griddle hack,rewrite_v1,"{
+  ""expanded_query"": ""griddle hack"",
+  ""intent"": ""informational"",
+  ""category"": ""cooking"",
+  ""uncertainty"": ""low""
+}",griddle hack,informational,cooking,low,accept,griddle hack,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:25:56.855086+00:00,,valid
+47566,grill plate,rewrite_v1,"{
+  ""expanded_query"": ""grill plate"",
+  ""intent"": ""transactional"",
+  ""category"": ""grill accessories"",
+  ""uncertainty"": ""low""
+}",grill plate,transactional,grill accessories,low,accept,grill plate,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:01.486416+00:00,,valid
+50768,hnbun,rewrite_v1,"{
+  ""expanded_query"": ""hnbun"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",hnbun,informational,unknown,high,accept,hnbun,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:02.514580+00:00,,valid
+51252,hoot,rewrite_v1,"{
+  ""expanded_query"": ""hoot"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",hoot,informational,unknown,high,accept,hoot,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:05.484797+00:00,,valid
+52968,inc,rewrite_v1,"{
+  ""expanded_query"": ""inc"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",inc,informational,unknown,high,accept,inc,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:10.502904+00:00,,valid
+55005,isocket 3g,rewrite_v1,"{
+  ""expanded_query"": ""iSocket 3G device"",
+  ""intent"": ""transactional"",
+  ""category"": ""mobile broadband device"",
+  ""uncertainty"": ""medium""
+}",iSocket 3G device,transactional,mobile broadband device,medium,accept,iSocket 3G device,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:13.262091+00:00,,valid
+55576,jaws,rewrite_v1,"{
+  ""expanded_query"": ""jaws"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",jaws,informational,unknown,high,accept,jaws,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:16.309672+00:00,,valid
+55923,jewelry bar,rewrite_v1,"{
+  ""expanded_query"": ""jewelry bar"",
+  ""intent"": ""transactional"",
+  ""category"": ""jewelry"",
+  ""uncertainty"": ""medium""
+}",jewelry bar,transactional,jewelry,medium,accept,jewelry bar,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:21.415925+00:00,,valid
+57084,kayak anchor,rewrite_v1,"{
+  ""expanded_query"": ""kayak anchor"",
+  ""intent"": ""transactional"",
+  ""category"": ""kayak accessories"",
+  ""uncertainty"": ""low""
+}",kayak anchor,transactional,kayak accessories,low,accept,kayak anchor,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:22.513150+00:00,,valid
+57458,keyboard,rewrite_v1,"{
+  ""expanded_query"": ""keyboard"",
+  ""intent"": ""transactional"",
+  ""category"": ""keyboards"",
+  ""uncertainty"": ""high""
+}",keyboard,transactional,keyboards,high,accept,keyboard,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:25.097681+00:00,,valid
+58398,kingwork,rewrite_v1,"{
+  ""expanded_query"": ""kingwork"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",kingwork,informational,unknown,high,accept,kingwork,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:26.501646+00:00,,valid
+58401,kinks anthology,rewrite_v1,"{
+  ""expanded_query"": ""kinks anthology"",
+  ""intent"": ""informational"",
+  ""category"": ""books"",
+  ""uncertainty"": ""low""
+}",kinks anthology,informational,books,low,accept,kinks anthology,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:31.645393+00:00,,valid
+58436,kiss 3,rewrite_v1,"{
+  ""expanded_query"": ""kiss 3"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",kiss 3,informational,unknown,high,accept,kiss 3,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:33.130894+00:00,,valid
+63029,live animals,rewrite_v1,"{
+  ""expanded_query"": ""live animals"",
+  ""intent"": ""transactional"",
+  ""category"": ""animals"",
+  ""uncertainty"": ""medium""
+}",live animals,transactional,animals,medium,accept,live animals,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:38.103575+00:00,,valid
+63120,llama pajamas,rewrite_v1,"{
+  ""expanded_query"": ""llama pajamas"",
+  ""intent"": ""transactional"",
+  ""category"": ""pajamas"",
+  ""uncertainty"": ""low""
+}",llama pajamas,transactional,pajamas,low,accept,llama pajamas,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:40.767506+00:00,,valid
+63352,lol furniture,rewrite_v1,"{
+  ""expanded_query"": ""lol furniture"",
+  ""intent"": ""transactional"",
+  ""category"": ""furniture"",
+  ""uncertainty"": ""high""
+}",lol furniture,transactional,furniture,high,accept,lol furniture,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:43.292408+00:00,,valid
+64020,lsu,rewrite_v1,"{
+  ""expanded_query"": ""LSU"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",LSU,informational,unknown,high,accept,lsu,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:46.493907+00:00,,valid
+65113,makeup bases,rewrite_v1,"{
+  ""expanded_query"": ""makeup bases"",
+  ""intent"": ""transactional"",
+  ""category"": ""makeup bases"",
+  ""uncertainty"": ""low""
+}",makeup bases,transactional,makeup bases,low,accept,makeup bases,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:51.539470+00:00,,valid
+66519,max outfit,rewrite_v1,"{
+  ""expanded_query"": ""max outfit"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",max outfit,informational,unknown,high,accept,max outfit,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:54.244236+00:00,,valid
+68602,mi4 watch,rewrite_v1,"{
+  ""expanded_query"": ""mi4 watch"",
+  ""intent"": ""transactional"",
+  ""category"": ""watch"",
+  ""uncertainty"": ""medium""
+}",mi4 watch,transactional,watch,medium,accept,mi4 watch,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:56.858379+00:00,,valid
+68636,michael gelb,rewrite_v1,"{
+  ""expanded_query"": ""Michael Gelb"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Michael Gelb,informational,unknown,high,accept,michael gelb,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:26:59.516358+00:00,,valid
+70721,mortrin infant,rewrite_v1,"{
+  ""expanded_query"": ""Mortrin infant"",
+  ""intent"": ""transactional"",
+  ""category"": ""infant formula"",
+  ""uncertainty"": ""low""
+}",Mortrin infant,transactional,infant formula,low,accept,mortrin infant,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:02.184595+00:00,,valid
+70964,motorhome pilloes,rewrite_v1,"{
+  ""expanded_query"": ""motorhome pillows"",
+  ""intent"": ""transactional"",
+  ""category"": ""motorhome accessories"",
+  ""uncertainty"": ""medium""
+}",motorhome pillows,transactional,motorhome accessories,medium,accept,motorhome pillows,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:07.217741+00:00,,valid
+71042,mountaintop whitlow,rewrite_v1,"{
+  ""expanded_query"": ""mountaintop whitlow"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",mountaintop whitlow,informational,unknown,high,accept,mountaintop whitlow,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:08.898823+00:00,,valid
+71264,mrs fletcher,rewrite_v1,"{
+  ""expanded_query"": ""Mrs Fletcher"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Mrs Fletcher,informational,unknown,high,accept,mrs fletcher,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:13.992565+00:00,,valid
+71807,my boyfriend,rewrite_v1,"{
+  ""expanded_query"": ""my boyfriend"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",my boyfriend,informational,unknown,high,accept,my boyfriend,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:16.481821+00:00,,valid
+71925,mystflame,rewrite_v1,"{
+  ""expanded_query"": ""Mystflame"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Mystflame,transactional,unknown,high,accept,mystflame,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:19.016662+00:00,,valid
+75102,odogaron figure,rewrite_v1,"{
+  ""expanded_query"": ""Odogaron figure"",
+  ""intent"": ""transactional"",
+  ""category"": ""figure"",
+  ""uncertainty"": ""low""
+}",Odogaron figure,transactional,figure,low,accept,odogaron figure,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:21.446569+00:00,,valid
+75377,olay whip,rewrite_v1,"{
+  ""expanded_query"": ""Olay Whip moisturizer"",
+  ""intent"": ""transactional"",
+  ""category"": ""skincare"",
+  ""uncertainty"": ""low""
+}",Olay Whip moisturizer,transactional,skincare,low,accept,Olay Whip moisturizer,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:23.894617+00:00,,valid
+75493,olympic lanyard,rewrite_v1,"{
+  ""expanded_query"": ""Olympic lanyard"",
+  ""intent"": ""transactional"",
+  ""category"": ""lanyards"",
+  ""uncertainty"": ""low""
+}",Olympic lanyard,transactional,lanyards,low,accept,olympic lanyard,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:26.368953+00:00,,valid
+75678,one wheel,rewrite_v1,"{
+  ""expanded_query"": ""one wheel"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",one wheel,informational,unknown,high,accept,one wheel,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:28.836473+00:00,,valid
+75849,oppo mobail,rewrite_v1,"{
+  ""expanded_query"": ""oppo mobile"",
+  ""intent"": ""transactional"",
+  ""category"": ""smartphones"",
+  ""uncertainty"": ""medium""
+}",oppo mobile,transactional,smartphones,medium,accept,oppo mobile,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:31.170596+00:00,,valid
+76350,oscar square,rewrite_v1,"{
+  ""expanded_query"": ""Oscar Square"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Oscar Square,informational,unknown,high,accept,oscar square,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:33.714538+00:00,,valid
+77629,paparika,rewrite_v1,"{
+  ""expanded_query"": ""paprika"",
+  ""intent"": ""informational"",
+  ""category"": ""spices"",
+  ""uncertainty"": ""medium""
+}",paprika,informational,spices,medium,accept,paprika,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:36.123934+00:00,,valid
+78094,patio bars,rewrite_v1,"{
+  ""expanded_query"": ""patio bars"",
+  ""intent"": ""transactional"",
+  ""category"": ""patio furniture"",
+  ""uncertainty"": ""low""
+}",patio bars,transactional,patio furniture,low,accept,patio bars,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:38.697092+00:00,,valid
+78148,patriotic men,rewrite_v1,"{
+  ""expanded_query"": ""patriotic men's items"",
+  ""intent"": ""transactional"",
+  ""category"": ""men's patriotic merchandise"",
+  ""uncertainty"": ""high""
+}",patriotic men's items,transactional,men's patriotic merchandise,high,accept,patriotic men's items,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:41.773441+00:00,,valid
+79396,phantom quickdraw,rewrite_v1,"{
+  ""expanded_query"": ""Phantom Quickdraw"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Phantom Quickdraw,transactional,unknown,high,accept,phantom quickdraw,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:44.365577+00:00,,valid
+79479,"pho,edit",rewrite_v1,"{
+  ""expanded_query"": ""pho edit"",
+  ""intent"": ""informational"",
+  ""category"": ""food"",
+  ""uncertainty"": ""high""
+}",pho edit,informational,food,high,accept,pho edit,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:47.119679+00:00,,valid
+80097,pinched nerve,rewrite_v1,"{
+  ""expanded_query"": ""pinched nerve"",
+  ""intent"": ""informational"",
+  ""category"": ""health"",
+  ""uncertainty"": ""high""
+}",pinched nerve,informational,health,high,accept,pinched nerve,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:52.202661+00:00,,valid
+80949,plantronics cs510,rewrite_v1,"{
+  ""expanded_query"": ""Plantronics CS510"",
+  ""intent"": ""transactional"",
+  ""category"": ""headsets"",
+  ""uncertainty"": ""low""
+}",Plantronics CS510,transactional,headsets,low,accept,plantronics cs510,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:54.934060+00:00,,valid
+80985,plastic babies,rewrite_v1,"{
+  ""expanded_query"": ""plastic babies"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",plastic babies,transactional,unknown,high,accept,plastic babies,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:27:57.715279+00:00,,valid
+81740,pokemon cake,rewrite_v1,"{
+  ""expanded_query"": ""pokemon cake"",
+  ""intent"": ""transactional"",
+  ""category"": ""cakes"",
+  ""uncertainty"": ""medium""
+}",pokemon cake,transactional,cakes,medium,accept,pokemon cake,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:02.672674+00:00,,valid
+83112,premiere league,rewrite_v1,"{
+  ""expanded_query"": ""Premier League"",
+  ""intent"": ""informational"",
+  ""category"": ""sports league"",
+  ""uncertainty"": ""high""
+}",Premier League,informational,sports league,high,accept,Premier League,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:03.745295+00:00,,valid
+84425,pure curcumin,rewrite_v1,"{
+  ""expanded_query"": ""pure curcumin"",
+  ""intent"": ""transactional"",
+  ""category"": ""dietary supplements"",
+  ""uncertainty"": ""low""
+}",pure curcumin,transactional,dietary supplements,low,accept,pure curcumin,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:06.375094+00:00,,valid
+85189,racecar bed,rewrite_v1,"{
+  ""expanded_query"": ""racecar themed bed"",
+  ""intent"": ""transactional"",
+  ""category"": ""beds"",
+  ""uncertainty"": ""low""
+}",racecar themed bed,transactional,beds,low,accept,racecar themed bed,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:08.830588+00:00,,valid
+85500,ram,rewrite_v1,"{
+  ""expanded_query"": ""ram"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",ram,informational,unknown,high,accept,ram,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:11.519659+00:00,,valid
+85589,raptor fender,rewrite_v1,"{
+  ""expanded_query"": ""Ford Raptor fender"",
+  ""intent"": ""transactional"",
+  ""category"": ""automotive parts > fenders"",
+  ""uncertainty"": ""low""
+}",Ford Raptor fender,transactional,automotive parts > fenders,low,accept,Ford Raptor fender,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:13.974961+00:00,,valid
+85732,raw milk,rewrite_v1,"{
+  ""expanded_query"": ""raw milk"",
+  ""intent"": ""informational"",
+  ""category"": ""milk"",
+  ""uncertainty"": ""high""
+}",raw milk,informational,milk,high,accept,raw milk,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:19.186706+00:00,,valid
+88821,rowboats,rewrite_v1,"{
+  ""expanded_query"": ""rowboats"",
+  ""intent"": ""transactional"",
+  ""category"": ""rowboats"",
+  ""uncertainty"": ""low""
+}",rowboats,transactional,rowboats,low,accept,rowboats,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:21.641660+00:00,,valid
+89412,ryze tello,rewrite_v1,"{
+  ""expanded_query"": ""Ryze Tello drone"",
+  ""intent"": ""transactional"",
+  ""category"": ""drones"",
+  ""uncertainty"": ""low""
+}",Ryze Tello drone,transactional,drones,low,accept,Ryze Tello drone,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:22.747857+00:00,,valid
+91732,sensitive teeth,rewrite_v1,"{
+  ""expanded_query"": ""sensitive teeth"",
+  ""intent"": ""informational"",
+  ""category"": ""Oral Care"",
+  ""uncertainty"": ""medium""
+}",sensitive teeth,informational,Oral Care,medium,accept,sensitive teeth,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:27.602951+00:00,,valid
+93072,shure sm7b,rewrite_v1,"{
+  ""expanded_query"": ""Shure SM7B microphone"",
+  ""intent"": ""transactional"",
+  ""category"": ""microphones"",
+  ""uncertainty"": ""low""
+}",Shure SM7B microphone,transactional,microphones,low,accept,Shure SM7B microphone,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:28.605786+00:00,,valid
+94218,skullgirls,rewrite_v1,"{
+  ""expanded_query"": ""Skullgirls"",
+  ""intent"": ""informational"",
+  ""category"": ""video game"",
+  ""uncertainty"": ""low""
+}",Skullgirls,informational,video game,low,accept,skullgirls,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:31.191780+00:00,,valid
+95310,snapsies funko,rewrite_v1,"{
+  ""expanded_query"": ""Snapsies Funko"",
+  ""intent"": ""transactional"",
+  ""category"": ""collectibles"",
+  ""uncertainty"": ""low""
+}",Snapsies Funko,transactional,collectibles,low,accept,snapsies funko,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:33.912812+00:00,,valid
+95326,sneakers,rewrite_v1,"{
+  ""expanded_query"": ""sneakers"",
+  ""intent"": ""transactional"",
+  ""category"": ""shoes"",
+  ""uncertainty"": ""low""
+}",sneakers,transactional,shoes,low,accept,sneakers,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:36.466355+00:00,,valid
+97862,steampunk shoes,rewrite_v1,"{
+  ""expanded_query"": ""steampunk shoes"",
+  ""intent"": ""transactional"",
+  ""category"": ""shoes"",
+  ""uncertainty"": ""low""
+}",steampunk shoes,transactional,shoes,low,accept,steampunk shoes,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:41.367520+00:00,,valid
+99620,swaggear,rewrite_v1,"{
+  ""expanded_query"": ""swag gear"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",swag gear,transactional,unknown,high,accept,swag gear,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:42.399632+00:00,,valid
+100299,tach adapter,rewrite_v1,"{
+  ""expanded_query"": ""tachometer adapter"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",tachometer adapter,transactional,unknown,high,accept,tachometer adapter,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:45.130345+00:00,,valid
+100884,taysers,rewrite_v1,"{
+  ""expanded_query"": ""tasers"",
+  ""intent"": ""transactional"",
+  ""category"": ""tasers"",
+  ""uncertainty"": ""medium""
+}",tasers,transactional,tasers,medium,accept,tasers,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:47.743297+00:00,,valid
+101515,tent octagon,rewrite_v1,"{
+  ""expanded_query"": ""octagon tent"",
+  ""intent"": ""transactional"",
+  ""category"": ""tents"",
+  ""uncertainty"": ""low""
+}",octagon tent,transactional,tents,low,accept,octagon tent,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:50.246201+00:00,,valid
+101657,teton tent,rewrite_v1,"{
+  ""expanded_query"": ""Teton tent"",
+  ""intent"": ""transactional"",
+  ""category"": ""tents"",
+  ""uncertainty"": ""low""
+}",Teton tent,transactional,tents,low,accept,teton tent,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:52.724785+00:00,,valid
+102795,this storm,rewrite_v1,"{
+  ""expanded_query"": ""this storm"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",this storm,informational,unknown,high,accept,this storm,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:55.172325+00:00,,valid
+103101,tiger tattoo,rewrite_v1,"{
+  ""expanded_query"": ""tiger tattoo"",
+  ""intent"": ""informational"",
+  ""category"": ""tattoos"",
+  ""uncertainty"": ""low""
+}",tiger tattoo,informational,tattoos,low,accept,tiger tattoo,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:28:57.727481+00:00,,valid
+104127,toosii tapestry,rewrite_v1,"{
+  ""expanded_query"": ""toosii tapestry"",
+  ""intent"": ""transactional"",
+  ""category"": ""tapestry"",
+  ""uncertainty"": ""low""
+}",toosii tapestry,transactional,tapestry,low,accept,toosii tapestry,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:00.275533+00:00,,valid
+104713,tracxas 6wd,rewrite_v1,"{
+  ""expanded_query"": ""tracxas 6wd"",
+  ""intent"": ""transactional"",
+  ""category"": ""remote control cars"",
+  ""uncertainty"": ""low""
+}",tracxas 6wd,transactional,remote control cars,low,accept,tracxas 6wd,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:03.076399+00:00,,valid
+105326,tritton kunai,rewrite_v1,"{
+  ""expanded_query"": ""Tritton kunai"",
+  ""intent"": ""transactional"",
+  ""category"": ""kunai"",
+  ""uncertainty"": ""low""
+}",Tritton kunai,transactional,kunai,low,accept,tritton kunai,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:05.737995+00:00,,valid
+105629,tuck everlasting,rewrite_v1,"{
+  ""expanded_query"": ""Tuck Everlasting"",
+  ""intent"": ""informational"",
+  ""category"": ""books"",
+  ""uncertainty"": ""medium""
+}",Tuck Everlasting,informational,books,medium,accept,tuck everlasting,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:08.600486+00:00,,valid
+105838,turtleneck romper,rewrite_v1,"{
+  ""expanded_query"": ""turtleneck romper"",
+  ""intent"": ""transactional"",
+  ""category"": ""rompers"",
+  ""uncertainty"": ""low""
+}",turtleneck romper,transactional,rompers,low,accept,turtleneck romper,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:13.749262+00:00,,valid
+107500,usha village,rewrite_v1,"{
+  ""expanded_query"": ""Usha Village"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Usha Village,informational,unknown,high,accept,usha village,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:15.055524+00:00,,valid
+107555,utsumi 299,rewrite_v1,"{
+  ""expanded_query"": ""Utsumi 299"",
+  ""intent"": ""transactional"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Utsumi 299,transactional,unknown,high,accept,utsumi 299,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:17.673791+00:00,,valid
+107784,vampire cape,rewrite_v1,"{
+  ""expanded_query"": ""vampire cape"",
+  ""intent"": ""transactional"",
+  ""category"": ""capes"",
+  ""uncertainty"": ""low""
+}",vampire cape,transactional,capes,low,accept,vampire cape,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:22.619710+00:00,,valid
+108859,virgin killer,rewrite_v1,"{
+  ""expanded_query"": ""Virgin Killer"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Virgin Killer,informational,unknown,high,accept,virgin killer,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:24.087240+00:00,,valid
+109057,vlogging camera,rewrite_v1,"{
+  ""expanded_query"": ""camera for vlogging"",
+  ""intent"": ""transactional"",
+  ""category"": ""cameras"",
+  ""uncertainty"": ""low""
+}",camera for vlogging,transactional,cameras,low,accept,camera for vlogging,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:26.188171+00:00,,valid
+109060,vlone shirt,rewrite_v1,"{
+  ""expanded_query"": ""vlone shirt"",
+  ""intent"": ""transactional"",
+  ""category"": ""shirts"",
+  ""uncertainty"": ""low""
+}",vlone shirt,transactional,shirts,low,accept,vlone shirt,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:28.440145+00:00,,valid
+109473,wall cubes,rewrite_v1,"{
+  ""expanded_query"": ""wall cubes"",
+  ""intent"": ""transactional"",
+  ""category"": ""wall decor"",
+  ""uncertainty"": ""low""
+}",wall cubes,transactional,wall decor,low,accept,wall cubes,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:31.181968+00:00,,valid
+110719,westing game,rewrite_v1,"{
+  ""expanded_query"": ""Westing game"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",Westing game,informational,unknown,high,accept,westing game,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:35.888353+00:00,,valid
+113443,wonder lift,rewrite_v1,"{
+  ""expanded_query"": ""wonder lift"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",wonder lift,informational,unknown,high,accept,wonder lift,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:37.123265+00:00,,valid
+114023,wreaths diy,rewrite_v1,"{
+  ""expanded_query"": ""DIY wreaths"",
+  ""intent"": ""informational"",
+  ""category"": ""wreaths"",
+  ""uncertainty"": ""low""
+}",DIY wreaths,informational,wreaths,low,accept,DIY wreaths,"manually reviewed by user, no invented brand/attribute/size found, accepted as-is","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:42.128718+00:00,,valid
+114957,yeti cups,rewrite_v1,"{
+  ""expanded_query"": ""Yeti cups"",
+  ""intent"": ""transactional"",
+  ""category"": ""cups"",
+  ""uncertainty"": ""low""
+}",Yeti cups,transactional,cups,low,accept,yeti cups,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:43.204456+00:00,,valid
+115635,zero cherry,rewrite_v1,"{
+  ""expanded_query"": ""zero cherry"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",zero cherry,informational,unknown,high,accept,zero cherry,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:46.461160+00:00,,valid
+115665,zerplus,rewrite_v1,"{
+  ""expanded_query"": ""zerplus"",
+  ""intent"": ""informational"",
+  ""category"": ""unknown"",
+  ""uncertainty"": ""high""
+}",zerplus,informational,unknown,high,accept,zerplus,"no rewrite made (expanded_query == raw_query), nothing to review for invented content","openai/gpt-oss-120b (Groq API, automated generation)",2026-08-19T06:29:51.616419+00:00,,valid

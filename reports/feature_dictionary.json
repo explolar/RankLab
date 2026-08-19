@@ -1,0 +1,86 @@
+{
+  "bm25_title_score": {
+    "definition": "BM25 score of the candidate against a title-only index, for the candidate's own query. NaN if the candidate isn't in that query's title-index top-100.",
+    "range": "[0, inf), NaN for out-of-top-100 candidates",
+    "missing_value_handling": "fillna(0) \u2014 absence from title-index top-100 means negligible title-lexical relevance, 0 is a reasonable floor.",
+    "why_it_helps": "isolates lexical match strength on the highest-signal field (title) from the noisier combined bm25_body_score."
+  },
+  "bm25_body_score": {
+    "definition": "BM25 score against the combined product_text (title+brand+bullets+color) index \u2014 reused directly from the Step 6 candidate-generation retrieval score.",
+    "range": "[0, inf), NaN for candidates that entered the pool only via dense retrieval",
+    "missing_value_handling": "fillna(0) \u2014 dense-only candidates weren't scored by BM25 at all.",
+    "why_it_helps": "captures lexical match across all product text, not just the title."
+  },
+  "dense_cosine_similarity": {
+    "definition": "Cosine similarity between query and product bge-base-en-v1.5 embeddings \u2014 reused directly from Step 6 (embeddings pre-normalized, inner product == cosine).",
+    "range": "[-1, 1], NaN for candidates that entered the pool only via BM25",
+    "missing_value_handling": "fillna(0) \u2014 treated as neutral/unrelated in embedding space for BM25-only candidates.",
+    "why_it_helps": "captures semantic relevance BM25 structurally cannot (synonyms, negation-free rephrasing) \u2014 documented directly in this project's own Step 3/6 failure analysis."
+  },
+  "exact_matched_token_count": {
+    "definition": "Count of query tokens that appear verbatim (case-insensitive) in the candidate's product_text tokens.",
+    "range": "[0, query_length]",
+    "missing_value_handling": "never missing (0 if no overlap).",
+    "why_it_helps": "simple, explainable lexical overlap signal independent of BM25's IDF weighting."
+  },
+  "query_token_coverage": {
+    "definition": "exact_matched_token_count / max(query_length, 1).",
+    "range": "[0, 1]",
+    "missing_value_handling": "denominator floored at 1 \u2014 a small number of queries are non-Latin-script/symbol-only and tokenize to 0 words under the regex tokenizer; floor avoids NaN without dropping these real queries.",
+    "why_it_helps": "normalizes match count by query length, so short and long queries are comparable."
+  },
+  "jaccard_similarity": {
+    "definition": "|query_tokens \u2229 product_tokens| / |query_tokens \u222a product_tokens|.",
+    "range": "[0, 1]",
+    "missing_value_handling": "never missing.",
+    "why_it_helps": "penalizes candidates with lots of extra unrelated vocabulary, unlike raw overlap count."
+  },
+  "fuzzy_token_sort_ratio": {
+    "definition": "rapidfuzz token_sort_ratio between query and product_title (word-order-independent fuzzy string similarity), scaled to [0,1].",
+    "range": "[0, 1]",
+    "missing_value_handling": "never missing.",
+    "why_it_helps": "catches near-matches (typos, minor wording differences, word reordering) exact/Jaccard matching miss."
+  },
+  "query_length": {
+    "definition": "token count of the query.",
+    "range": "[1, inf)",
+    "missing_value_handling": "never missing.",
+    "why_it_helps": "short queries behave differently (per Step 1 EDA and Step 9's planned rewrite study) \u2014 lets the model learn query-length-dependent behavior."
+  },
+  "product_title_length": {
+    "definition": "token count of product_title.",
+    "range": "[1, inf)",
+    "missing_value_handling": "never missing.",
+    "why_it_helps": "very long or very short titles may correlate with relevance patterns (e.g. keyword-stuffed listings)."
+  },
+  "length_ratio": {
+    "definition": "query_length / max(product_title_length, 1).",
+    "range": "(0, inf)",
+    "missing_value_handling": "denominator floored at 1 \u2014 a small number of product titles are non-Latin-script/symbol-only and tokenize to 0 words under the regex tokenizer; floor avoids Inf without dropping these real products.",
+    "why_it_helps": "captures query-to-title specificity mismatch independent of either raw length alone."
+  },
+  "brand_exact_match": {
+    "definition": "1 if product_brand (lowercased) appears as a substring of the query, else 0. 0 if brand is null.",
+    "range": "{0, 1}",
+    "missing_value_handling": "0 when product_brand is null (5.6% of catalogue per Step 1 EDA) \u2014 absence of a brand can't match.",
+    "why_it_helps": "brand queries are common and high-precision when they match."
+  },
+  "category_token_overlap": {
+    "definition": "Substitute for the plan's product_type feature (no such column exists in this ESCI export, flagged at Step 1). Token overlap fraction between query and product_description+product_bullet_point.",
+    "range": "[0, 1]",
+    "missing_value_handling": "0 when both description and bullet_point are null (documented in Step 1: ~this happens for a small fraction of the catalogue).",
+    "why_it_helps": "approximates category/attribute relevance using the closest available fields."
+  },
+  "negation_conflict_flag": {
+    "definition": "1 if the query contains a negation cue ('without'/'no'/'non'/'not') AND the token immediately following it appears in the candidate's product_text, else 0. Directly operationalizes Step 3's documented BM25 failure mode (negation queries retrieving products that contain the excluded feature).",
+    "range": "{0, 1}",
+    "missing_value_handling": "0 when query has no negation cue.",
+    "why_it_helps": "gives LambdaMART an explicit signal to down-rank exactly the failure pattern found in manual review \u2014 a feature this project's own data justified, not a generic textbook one."
+  },
+  "color_match_flag": {
+    "definition": "1 if product_color (lowercased) appears as a substring of the query, else 0. 0 if color is null.",
+    "range": "{0, 1}",
+    "missing_value_handling": "0 when product_color is null (32.2% of catalogue per Step 1 EDA).",
+    "why_it_helps": "color is a common, high-precision query attribute when present in both query and product."
+  }
+}

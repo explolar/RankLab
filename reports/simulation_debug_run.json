@@ -1,0 +1,129 @@
+{
+  "seed": 42,
+  "ctr_by_arm": {
+    "A_bm25": 0.48,
+    "B_lambdamart": 0.5256,
+    "C_lambdamart_rewrite": 0.5426
+  },
+  "sanity_checkpoint_passed": true,
+  "cuped_theta": 0.3802106204739341,
+  "pairwise_comparisons": {
+    "B_lambdamart_vs_A_bm25": {
+      "lift": 0.045599999999999974,
+      "p1": 0.5256,
+      "p2": 0.48,
+      "z": 4.56007150248174,
+      "p_value": 5.113620602736901e-06,
+      "ci_95_low": 0.026020695982624895,
+      "ci_95_high": 0.06517930401737505,
+      "var_before": 0.2500171617161716,
+      "var_after_cuped": 0.21159592972305355,
+      "cuped_variance_reduction": 0.15367437870819134,
+      "p_value_bh_adjusted": 7.670430904105352e-06
+    },
+    "C_lambdamart_rewrite_vs_A_bm25": {
+      "lift": 0.06259999999999999,
+      "p1": 0.5426,
+      "p2": 0.48,
+      "z": 6.261599291466664,
+      "p_value": 3.8104897015500683e-10,
+      "ci_95_low": 0.04304345747334666,
+      "ci_95_high": 0.08215654252665332,
+      "var_before": 0.24989729972997302,
+      "var_after_cuped": 0.21024285847243365,
+      "cuped_variance_reduction": 0.15868295215829875,
+      "p_value_bh_adjusted": 1.1431469104650205e-09
+    },
+    "B_lambdamart_vs_C_lambdamart_rewrite": {
+      "lift": -0.017000000000000015,
+      "p1": 0.5256,
+      "p2": 0.5426,
+      "z": -1.7039673993719329,
+      "p_value": 0.08838717792203221,
+      "ci_95_low": -0.036551525705212896,
+      "ci_95_high": 0.002551525705212866,
+      "var_before": 0.24886207620762077,
+      "var_after_cuped": 0.21871909161636793,
+      "cuped_variance_reduction": 0.12112325449742345,
+      "p_value_bh_adjusted": 0.08838717792203221
+    }
+  },
+  "sequential_analysis": [
+    {
+      "info_fraction": 0.25,
+      "n_per_arm": 1250,
+      "obf_boundary_z": 3.919927969080108,
+      "B_lambdamart_vs_A_bm25_z": 1.840763559828146,
+      "B_lambdamart_vs_A_bm25_unadjusted_p": 0.06565621505408892,
+      "B_lambdamart_vs_A_bm25_boundary_crossed": false,
+      "C_lambdamart_rewrite_vs_A_bm25_z": 3.00406424414691,
+      "C_lambdamart_rewrite_vs_A_bm25_unadjusted_p": 0.0026639906606200636,
+      "C_lambdamart_rewrite_vs_A_bm25_boundary_crossed": false
+    },
+    {
+      "info_fraction": 0.5,
+      "n_per_arm": 2500,
+      "obf_boundary_z": 2.7718076486993555,
+      "B_lambdamart_vs_A_bm25_z": 3.790365263284188,
+      "B_lambdamart_vs_A_bm25_unadjusted_p": 0.0001504259137123931,
+      "B_lambdamart_vs_A_bm25_boundary_crossed": true,
+      "C_lambdamart_rewrite_vs_A_bm25_z": 4.951744810778502,
+      "C_lambdamart_rewrite_vs_A_bm25_unadjusted_p": 7.355101527828367e-07,
+      "C_lambdamart_rewrite_vs_A_bm25_boundary_crossed": true
+    },
+    {
+      "info_fraction": 0.75,
+      "n_per_arm": 3750,
+      "obf_boundary_z": 2.2631714681523434,
+      "B_lambdamart_vs_A_bm25_z": 4.157234721795841,
+      "B_lambdamart_vs_A_bm25_unadjusted_p": 3.2212298429312725e-05,
+      "B_lambdamart_vs_A_bm25_boundary_crossed": true,
+      "C_lambdamart_rewrite_vs_A_bm25_z": 5.475346290889378,
+      "C_lambdamart_rewrite_vs_A_bm25_unadjusted_p": 4.366568484570621e-08,
+      "C_lambdamart_rewrite_vs_A_bm25_boundary_crossed": true
+    },
+    {
+      "info_fraction": 1.0,
+      "n_per_arm": 5000,
+      "obf_boundary_z": 1.959963984540054,
+      "B_lambdamart_vs_A_bm25_z": 4.56007150248174,
+      "B_lambdamart_vs_A_bm25_unadjusted_p": 5.113620602736901e-06,
+      "B_lambdamart_vs_A_bm25_boundary_crossed": true,
+      "C_lambdamart_rewrite_vs_A_bm25_z": 6.261599291466664,
+      "C_lambdamart_rewrite_vs_A_bm25_unadjusted_p": 3.8104897015500683e-10,
+      "C_lambdamart_rewrite_vs_A_bm25_boundary_crossed": true
+    }
+  ],
+  "required_sample_size_per_arm": 3841,
+  "config": {
+    "top_n": 10,
+    "attraction_probability": {
+      "0": 0.02,
+      "1": 0.15,
+      "2": 0.35,
+      "3": 0.65
+    },
+    "click_rule": "independent_per_position",
+    "users_per_arm": 5000,
+    "arms": [
+      "A_bm25",
+      "B_lambdamart",
+      "C_lambdamart_rewrite"
+    ],
+    "pre_period_arm": "A_bm25",
+    "user_effect_std": 0.25,
+    "debug_seed": 42,
+    "stability_seeds": 100,
+    "mde_ctr_pp": 0.02,
+    "planning_baseline_ctr": 0.1,
+    "alpha": 0.05,
+    "power": 0.8,
+    "info_fractions": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "fdr_q": 0.05
+  }
+}

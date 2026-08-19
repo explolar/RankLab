@@ -1,0 +1,58 @@
+project:
+  name: "RankLab"
+  seed: 42
+  locale: "us"
+
+data:
+  candidate_k: 100
+  label_mapping:
+    Exact: 3
+    Substitute: 2
+    Complement: 1
+    Irrelevant: 0
+
+splits:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+
+embedding_model:
+  name: "BAAI/bge-base-en-v1.5"
+  dimension: 768
+  max_length: 512
+
+# Step 11/12 synthetic experiment. These are modelling assumptions, not observed
+# customer behaviour -- see reports/results_log.md (Steps 11+12 entry) for the
+# explicit "clicks are simulated" framing this config exists to make auditable.
+simulation:
+  top_n: 10
+  # P(attract | relevance grade). Monotonic increasing by construction (0 < 1 < 2 < 3).
+  attraction_probability:
+    0: 0.02
+    1: 0.15
+    2: 0.35
+    3: 0.65
+  # P(examine rank i) = 1 / log2(rank + 1), standard position-bias model. No config needed,
+  # formula is fixed (plan Step 11.3).
+  click_rule: "independent_per_position"  # each of the top_n positions gets its own
+    # independent Bernoulli(examine_i * attract_i) draw; session outcome Y = 1 if any
+    # position was clicked. (Not a cascade/dependent-examination model -- documented
+    # per plan Step 11.4's explicit requirement to state which rule is used.)
+  users_per_arm: 5000
+  arms: ["A_bm25", "B_lambdamart", "C_lambdamart_rewrite"]
+  pre_period_arm: "A_bm25"  # what every simulated user experienced before the experiment
+    # started (baseline system, same for everyone pre-randomization)
+  user_effect_std: 0.25  # per-user latent multiplier ~ Normal(1.0, this), clipped to
+    # [0.2, 2.5] -- the mechanism that correlates pre- and experiment-period outcomes,
+    # which CUPED needs (plan Step 11.5)
+  debug_seed: 42
+  stability_seeds: 100
+  mde_ctr_pp: 0.02  # minimum detectable effect for the sample-size/power calc (Step 12.4),
+    # in CTR percentage points -- a planning input, kept separate from observed results
+  planning_baseline_ctr: 0.10  # pre-specified assumption for the power calc, NOT derived
+    # from any simulated run's observed CTR (plan Step 12.4: "keep this separate from
+    # the observed result")
+  alpha: 0.05
+  power: 0.80
+  info_fractions: [0.25, 0.50, 0.75, 1.00]
+  fdr_q: 0.05  # Benjamini-Hochberg target FDR for the 3 pairwise comparisons

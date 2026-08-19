@@ -1,0 +1,64 @@
+{
+  "train_rows": 238623,
+  "val_rows_judged": 50745,
+  "train_time_s": 4.591006755828857,
+  "best_iteration": 268,
+  "grid_search_run": true,
+  "chosen_param_overrides": {
+    "num_leaves": 15
+  },
+  "comparison": {
+    "bm25": {
+      "recall_10_mean": 0.19292388345556893,
+      "ndcg_10_mean": 0.31122351648800917,
+      "mrr_10_mean": 0.5551566028838756
+    },
+    "dense": {
+      "recall_10_mean": 0.19516293333039555,
+      "ndcg_10_mean": 0.3187235256287946,
+      "mrr_10_mean": 0.5525763957582139
+    },
+    "candidate_union": {
+      "recall_10_mean": 0.20887703688390427,
+      "ndcg_10_mean": 0.3374858004454758,
+      "mrr_10_mean": 0.590830470375925
+    },
+    "lambdamart": {
+      "recall_10_mean": 0.21869065597630688,
+      "ndcg_10_mean": 0.36257316890166097,
+      "mrr_10_mean": 0.6126181967091058
+    }
+  },
+  "feature_importance_gain": {
+    "dense_cosine_similarity": 640,
+    "fuzzy_token_sort_ratio": 391,
+    "category_token_overlap": 375,
+    "jaccard_similarity": 357,
+    "product_title_length": 330,
+    "length_ratio": 328,
+    "bm25_title_score": 270,
+    "query_token_coverage": 259,
+    "bm25_body_score": 254,
+    "negation_conflict_flag": 195,
+    "query_length": 114,
+    "brand_exact_match": 109,
+    "color_match_flag": 70,
+    "exact_matched_token_count": 60
+  },
+  "mean_abs_shap": {
+    "dense_cosine_similarity": 0.48415254448620515,
+    "query_token_coverage": 0.18820997623972893,
+    "negation_conflict_flag": 0.08263115661839421,
+    "fuzzy_token_sort_ratio": 0.07846224972898638,
+    "jaccard_similarity": 0.05975391043586282,
+    "product_title_length": 0.053099005950878915,
+    "brand_exact_match": 0.04571893389475793,
+    "bm25_body_score": 0.04056196547832754,
+    "length_ratio": 0.03345919839069701,
+    "category_token_overlap": 0.03321690380651883,
+    "bm25_title_score": 0.02781189902768403,
+    "color_match_flag": 0.017216657174650898,
+    "exact_matched_token_count": 0.014359824699416617,
+    "query_length": 0.009703651579297184
+  }
+}

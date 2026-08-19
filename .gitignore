@@ -1,0 +1,32 @@
+# Internal planning/dev-process doc, not for the public repo
+RankLab_Project_Plan.md
+
+# Third-party dataset repo (cloned separately, has its own git history --
+# see README "Data setup" for the clone command). Never vendor this in.
+esci-data/
+
+# Large processed data and pipeline artifacts (models, indexes, embeddings,
+# candidate pools, feature tables) -- all regeneratable by running the
+# pipeline per README's run_all guide. Multi-GB, doesn't belong in git.
+data/
+artifacts/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Environments / secrets
+.env
+.venv/
+venv/
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/

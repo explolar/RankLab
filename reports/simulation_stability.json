@@ -1,0 +1,24 @@
+{
+  "n_seeds": 100,
+  "share_wins": {
+    "A_bm25": 0.0,
+    "B_lambdamart": 0.4,
+    "C_lambdamart_rewrite": 0.6
+  },
+  "avg_lift_vs_baseline": {
+    "B_lambdamart": 0.053204,
+    "C_lambdamart_rewrite": 0.05622800000000001
+  },
+  "std_lift_vs_baseline": {
+    "B_lambdamart": 0.009474723426042575,
+    "C_lambdamart_rewrite": 0.008580070862178237
+  },
+  "avg_cuped_variance_reduction": {
+    "B_lambdamart": 0.16345495423302392,
+    "C_lambdamart_rewrite": 0.16002292149225716
+  },
+  "share_bh_significant_vs_baseline": {
+    "B_lambdamart": 1.0,
+    "C_lambdamart_rewrite": 1.0
+  }
+}

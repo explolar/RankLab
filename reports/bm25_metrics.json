@@ -1,0 +1,17 @@
+{
+  "split": "validation",
+  "products_path": "data\\processed\\products.parquet",
+  "n_queries": 4477,
+  "catalogue_size": 482105,
+  "recall_100_mean": 0.4603518626716506,
+  "ndcg_10_mean": 0.3105624680708995,
+  "mrr_10_mean": 0.553209260027442,
+  "recall_100_median": 0.4375,
+  "ndcg_10_median": 0.25279507893794145,
+  "mrr_10_median": 0.5,
+  "latency_ms_median": 2.2323131561279297,
+  "latency_ms_p95": 4.125165939331053,
+  "latency_ms_p99": 5.660228729248045,
+  "tokenize_time_s": 34.38409233093262,
+  "index_time_s": 24.09921669960022
+}
