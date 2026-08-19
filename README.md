@@ -151,3 +151,8 @@ Sanity checkpoint passed (CTR rises with relevance strength: A < B ≈ C). Both 
 - The Step 11-12 experiment simulator's click model is a placeholder assumption; if real click-through data ever becomes available for this catalogue, the attraction-probability-by-grade config could be calibrated against it instead of asserted.
 - Phase D's arms are currently BM25 / LambdaMART / LambdaMART+rewrite; a fourth arm folding in Step 10's judging-agreement findings (e.g. a rescoring adjustment for the systematic Complement-mislabeling pattern) would be a natural extension, not yet built.
 - The full 12-config HNSW grid could be re-run at 482k scale for a completely current Pareto chart, if the extra compute time (last estimated at over an hour for the full latency-loop sweep) is worth it for a project at this stage — currently judged not worth it given the chosen config was already re-validated.
+
+## Author
+
+**Ankit Kumar** — M.Tech, Land and Water Resource Engineering, Indian Institute of Technology, Kharagpur
+Email: ankituday123@gmail.com · LinkedIn: [linkedin.com/in/ankit-kumar-9b3b06228](https://www.linkedin.com/in/ankit-kumar-9b3b06228/)
