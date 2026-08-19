@@ -1,10 +1,44 @@
+<div align="center">
+
 # RankLab
+
+**An offline, end-to-end e-commerce search-ranking pipeline — retrieval, learning-to-rank, LLM-assisted query rewriting, and a synthetic experimentation framework — benchmarked on Amazon's ESCI dataset.**
+
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![LightGBM](https://img.shields.io/badge/LightGBM-LambdaMART-brightgreen)](https://github.com/microsoft/LightGBM)
+[![FAISS](https://img.shields.io/badge/FAISS-HNSW%20index-orange)](https://github.com/facebookresearch/faiss)
+[![Sentence Transformers](https://img.shields.io/badge/embeddings-bge--base--en--v1.5-purple)](https://huggingface.co/BAAI/bge-base-en-v1.5)
+[![Streamlit](https://img.shields.io/badge/demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+
+[Results](#measured-results) · [Reproduce](#reproduce-run_all-guide) · [LLM Studies](#gptautomated-llm-studies-steps-9-10) · [Experiment Sim](#experiment-simulation-steps-11-12) · [Author](#author)
+
+</div>
+
+---
+
+<details>
+<summary><b>Table of Contents</b></summary>
+
+- [Problem](#problem)
+- [Data](#data)
+- [System diagram](#system-diagram)
+- [Reproduce (run_all guide)](#reproduce-run_all-guide)
+- [Measured results](#measured-results)
+  - [Retrieval](#retrieval)
+  - [Ranking](#ranking)
+- [GPT/automated LLM studies (Steps 9-10)](#gptautomated-llm-studies-steps-9-10)
+- [Experiment simulation (Steps 11-12)](#experiment-simulation-steps-11-12)
+- [Limitations](#limitations)
+- [Next steps](#next-steps)
+- [Author](#author)
+
+</details>
 
 ## Problem
 
 E-commerce search ranking is a two-stage problem — retrieve a candidate set, then rank it — and each stage has a different failure mode: retrieval determines the *ceiling* (a reranker can't recover a product that was never retrieved), ranking determines how well that ceiling gets realized in the top of the page. RankLab builds and measures both stages on real data (Amazon's ESCI Shopping Queries dataset), then asks two further questions on top: does automated LLM assistance (query rewriting, relevance judging) measurably help, and does a synthetic A/B experiment framework correctly avoid the standard statistical traps (peeking early, uncorrected multiple comparisons, unexplained variance)?
 
-**RankLab's core search pipeline (retrieval → features → ranking) is fully offline and local — no API, no hosted LLM, no backend service in that path.** The deliberate exceptions are Steps 9 and 10's LLM studies (query rewriting and relevance judging), which use the Groq API for generation (a documented deviation from this project's original manual-only design — see "GPT/automated LLM studies" below and `reports/results_log.md`'s 2026-08-19 methodology-change entries for the full reasoning). Results from those studies are labeled by their actual provenance, not presented as either "manual GPT" or as a scalable online system. Steps 11-12's experiment simulator is entirely local and, separately, entirely synthetic — every result there is explicitly labeled as simulated, not a claim about real customer behavior.
+> **RankLab's core search pipeline (retrieval → features → ranking) is fully offline and local — no API, no hosted LLM, no backend service in that path.** The deliberate exceptions are Steps 9 and 10's LLM studies (query rewriting and relevance judging), which use the Groq API for generation (a documented deviation from this project's original manual-only design — see [GPT/automated LLM studies](#gptautomated-llm-studies-steps-9-10) below and `reports/results_log.md`'s 2026-08-19 methodology-change entries for the full reasoning). Results from those studies are labeled by their actual provenance, not presented as either "manual GPT" or as a scalable online system. Steps 11-12's experiment simulator is entirely local and, separately, entirely synthetic — every result there is explicitly labeled as simulated, not a claim about real customer behavior.
 
 Dated experiment log, the authoritative source for every number in this README: [`reports/results_log.md`](reports/results_log.md).
 
@@ -22,38 +56,36 @@ The raw dataset (`esci-data/`) and all derived data/pipeline artifacts (`data/`,
 
 ```text
 Amazon ESCI queries + products + human relevance labels
-                         |
-                         v
+                         │
+                         ▼
       Local data preparation and train/validation/test split by query
-                         |
-        +----------------+----------------+
-        |                                 |
-        v                                 v
-  BM25 lexical retrieval           bge-base-en-v1.5 embeddings
-   (src/retrieval.py)              + HNSW index (src/candidates.py)
-        |                                 |
-        +------------ candidate pool (BM25 top-100 UNION dense top-100) ------------+
-                                                           |
-                                                           v
-                    14-feature extraction (src/feature_extraction.py)
-                          + LightGBM LambdaMART (src/ranker.py)
-                                                           |
-                                                           v
-                         ranked top 10 + offline metrics
-                                                           |
-              +--------------------+---------------------+
-              |                                          |
-              v                                          v
-  GPT/automated LLM study                       Synthetic A/B/n simulator
-  (rewrites / judging, Groq API,                (src/simulation.py --
-   human-reviewed -- Steps 9-10)                 CUPED + sequential tests, Steps 11-12)
+                         │
+        ┌────────────────┴────────────────┐
+        ▼                                  ▼
+  BM25 lexical retrieval            bge-base-en-v1.5 embeddings
+   (src/retrieval.py)               + HNSW index (src/candidates.py)
+        │                                  │
+        └───────── candidate pool (BM25 top-100 ∪ dense top-100) ─────────┘
+                                            │
+                                            ▼
+                     14-feature extraction (src/feature_extraction.py)
+                           + LightGBM LambdaMART (src/ranker.py)
+                                            │
+                                            ▼
+                          ranked top 10 + offline metrics
+                                            │
+              ┌─────────────────────────────┴────────────────────────────┐
+              ▼                                                          ▼
+  GPT/automated LLM study                                    Synthetic A/B/n simulator
+  (rewrites / judging, Groq API,                             (src/simulation.py —
+   human-reviewed — Steps 9-10)                                CUPED + sequential tests, Steps 11-12)
 ```
 
 ## Reproduce (run_all guide)
 
 No API key is required for the core pipeline (retrieval → candidates → features → ranking → simulator). `src/automated_rewrite.py` (Step 9) and `src/llm_judging.py` (Step 10) need `GROQ_API_KEY` set in your own environment if you want to *regenerate* the LLM-study data from scratch — get a free key at console.groq.com; never commit it or paste it into a chat. The LLM-study outputs already exist under `manual_gpt/` and don't need regenerating just to explore the results.
 
-**1. Clone and install:**
+**1. Clone and install**
 ```bash
 git clone <this-repo-url>
 cd RankLab
@@ -62,12 +94,12 @@ git clone https://github.com/amazon-science/esci-data
 ```
 Then download the ESCI parquet files into `esci-data/shopping_queries_dataset/` per that repo's own instructions (they're too large to be part of either repo's git history).
 
-**2. One-time data prep (notebooks, in order — builds `data/processed/` and `artifacts/indexes/` from the raw dataset):**
+**2. One-time data prep** — notebooks, in order, build `data/processed/` and `artifacts/indexes/` from the raw dataset:
 `01_eda_data_inspection.ipynb` → `02_retrieval_baseline.ipynb` → `03_dense_embeddings.ipynb` → `04_retrieval_index_benchmark.ipynb`
 
-Note: Step 3 (dense embeddings) is the slow one — expect anywhere from ~10 minutes to a few hours depending on your GPU, since it's encoding hundreds of thousands of products. See `reports/results_log.md` if you hit memory constraints on a smaller GPU; the notebook documents the exact workaround used here (encoding in a reduced-catalogue pass first, then filling in the rest).
+> Step 3 (dense embeddings) is the slow one — expect anywhere from ~10 minutes to a few hours depending on your GPU, since it's encoding hundreds of thousands of products. See `reports/results_log.md` if you hit memory constraints on a smaller GPU; the notebook documents the exact workaround used here (encoding in a reduced-catalogue pass first, then filling in the rest).
 
-**3. Core pipeline (scripts, in order):**
+**3. Core pipeline**
 ```bash
 python src/retrieval.py --split validation           # BM25 baseline
 python src/candidates.py --split all                 # BM25 union dense candidate pools, all splits
@@ -75,40 +107,45 @@ python src/feature_extraction.py --split all         # 14 features per candidate
 python src/ranker.py --grid-search --evaluate-test   # train + tune LambdaMART, evaluate once on test
 ```
 
-**4. LLM studies (optional — needs `GROQ_API_KEY`; pre-generated results are already tracked in git under `manual_gpt/`, so this step is only needed to regenerate them from scratch):**
+**4. LLM studies** (optional — needs `GROQ_API_KEY`; pre-generated results are already tracked in git under `manual_gpt/`, so this step is only needed to regenerate them from scratch)
 ```bash
 python src/automated_rewrite.py       # Step 9: query rewrite generation
 python src/llm_judging.py             # Step 10: relevance judging generation
 python src/gpt_study_eval.py          # Step 9 evaluation: paired retrieval + bootstrap CI
 ```
 
-**5. Synthetic experiment (Steps 11-12 — needs the ranker and the Step 9 rewrites from steps 3-4 above):**
+**5. Synthetic experiment** (Steps 11-12 — needs the ranker and the Step 9 rewrites from steps 3-4 above)
 ```bash
 python src/build_experiment_arms.py       # rebuild the 3 ranked-list arms (~2-3 min, no retraining)
 python src/simulation.py --stability-seeds 100
 ```
 
-**6. Interactive demo:**
+**6. Interactive demo**
 ```bash
 python -m streamlit run app.py
 ```
-(use `python -m streamlit`, not bare `streamlit` — pip installs the CLI script outside PATH on some setups, this form always works)
+> Use `python -m streamlit`, not bare `streamlit` — pip installs the CLI script outside PATH on some setups; this form always works.
+
 Pick an example query or type your own; shows BM25/dense/LambdaMART top-10 side by side, the LambdaMART feature breakdown, and — if the query happens to be one of the 150 Step-9 rewrite-study queries — the actual reviewed rewrite, clearly labeled with its real provenance (automated generation, human-reviewed).
 
 ## Measured results
 
 ### Retrieval
 
+<img src="reports/figures/retrieval_pareto.png" alt="Retrieval operating points: FlatIP vs chosen HNSW config, full 482k catalogue" width="650">
+
 - **BM25** (`bm25s`, over title+brand+bullets+color), full 482k catalogue: Recall@100 0.460, NDCG@10 0.311, MRR@10 0.553 (`src/retrieval.py`).
 - **Dense** (`BAAI/bge-base-en-v1.5`, 768-dim), full 482k catalogue: FlatIP (exact) Recall@100 0.509, p95 latency 75.3ms. **Chosen index: HNSW M=64, efSearch=256** — Recall@100 0.500 (98.2% of exact), p95 latency **4.5ms (~16.7x faster than exact search at this scale)**, 1.7GB index.
 
-**Why HNSW over FlatIP:** every benchmarked configuration cleared any reasonable latency/memory budget trivially at this catalogue size — the recall/latency/memory trade-off the exercise is meant to surface doesn't actually bind at 482k vectors. HNSW was chosen anyway, over FlatIP, to demonstrate the approximate-nearest-neighbor operating-point methodology that becomes load-bearing at production scale (millions of vectors), not because FlatIP was too slow here. IVF-PQ skipped: no memory pressure to solve. Config-selection grid (`reports/retrieval_benchmark.csv`, chart: `reports/figures/retrieval_pareto.png`) was run at the intermediate 164k catalogue as an initial screen; the *chosen* configuration was then re-validated at the full 482k scale (see `reports/results_log.md`) rather than re-running the entire 12-config grid a second time at full scale.
+**Why HNSW over FlatIP:** every benchmarked configuration cleared any reasonable latency/memory budget trivially at this catalogue size — the recall/latency/memory trade-off the exercise is meant to surface doesn't actually bind at 482k vectors. HNSW was chosen anyway, over FlatIP, to demonstrate the approximate-nearest-neighbor operating-point methodology that becomes load-bearing at production scale (millions of vectors), not because FlatIP was too slow here. IVF-PQ skipped: no memory pressure to solve. Config-selection grid (`reports/retrieval_benchmark.csv`) was run at the intermediate 164k catalogue as an initial screen; the *chosen* configuration was then re-validated at the full 482k scale (see `reports/results_log.md`) rather than re-running the entire 12-config grid a second time at full scale.
 
 Dense retrieval beats BM25 on every metric — expected from BM25's own failure analysis (`reports/results_log.md`, Step 3 entry), which found BM25's dominant failure mode is negation ("trash can *without* lid" retrieves cans *with* lids) and lexical/synonym gaps dense embeddings are structurally built to catch.
 
 ### Ranking
 
 LightGBM `LGBMRanker` (`lambdarank` objective) on 14 hand-built features (`src/feature_extraction.py`, `reports/feature_dictionary.json`) over a BM25∪dense candidate pool (`src/candidates.py`). Small tuning grid (`src/ranker.py --grid-search`), evaluated on held-out test (touched once):
+
+<img src="reports/figures/ranking_comparison.png" alt="Ranking metric comparison: BM25 vs Dense vs candidate union vs LambdaMART" width="650">
 
 | System | Test Recall@10 | Test NDCG@10 | Test MRR@10 |
 |---|---:|---:|---:|
@@ -117,17 +154,22 @@ LightGBM `LGBMRanker` (`lambdarank` objective) on 14 hand-built features (`src/f
 | Naive candidate-union (normalized score sum) | 0.210 | 0.337 | 0.590 |
 | **LambdaMART** | **0.224** | **0.365** | **0.613** |
 
-Chart: `reports/figures/ranking_comparison.png`.
-
 LambdaMART beats BM25 by +18.5% relative NDCG@10, and — the more meaningful comparison — beats the naive union baseline by +8.3%, showing the *learned* feature combination adds value beyond just summing the two retrieval signals. One custom feature, `negation_conflict_flag`, directly operationalizes the BM25 negation failure found in Step 3 and shows real negative correlation with relevance (-0.10) and real usage in the trained model (195 tree splits) — not just a theoretical addition. Full writeup: `reports/results_log.md`, Step 8 entry.
 
 ## GPT/automated LLM studies (Steps 9-10)
 
 Both studies use the Groq API (`openai/gpt-oss-120b`) for generation rather than a manual GPT chat interface — the user's explicit choice for speed, shown the trade-off each time (`reports/results_log.md` has the full reasoning for both). The model was originally meant to be Llama; Groq no longer hosts a general-purpose Llama chat model (confirmed live against Groq's `/models` endpoint), so it's `gpt-oss-120b` throughout, and every row's `model_label` records the actual model string used — never silently mislabeled.
 
-**Step 9 (query rewrite) protocol:** 150 held-out short queries (test-split, 1-2 tokens) sampled and frozen (`manual_gpt/rewrite_study_query_ids.csv`) *before* any generation. Fixed prompt: `manual_gpt/prompts/rewrite_v1.md`. Raw output preserved unedited in `manual_gpt/query_rewrites.csv`. Human review pass (accept/edit/reject) preserved — 120/150 were unchanged rewrites (nothing to review, since nothing was altered), 30/150 genuinely reviewed and accepted. Evaluated with paired local retrieval (raw vs. reviewed query) + bootstrap CI (2,000 resamples): **BM25 Recall@100 lift +0.013 (95% CI [0.003, 0.025] — excludes 0, real)**, dense lift +0.015 (CI [0.0004, 0.034] — barely excludes 0, marginal). Rewriting helps lexical retrieval more than semantic retrieval, which makes sense mechanistically (BM25 needs literal token overlap; dense embeddings already capture meaning from the raw query).
+**Step 9 — query rewrite.** 150 held-out short queries (test-split, 1-2 tokens) sampled and frozen (`manual_gpt/rewrite_study_query_ids.csv`) *before* any generation. Fixed prompt: `manual_gpt/prompts/rewrite_v1.md`. Raw output preserved unedited in `manual_gpt/query_rewrites.csv`. Human review pass (accept/edit/reject) preserved — 120/150 were unchanged rewrites (nothing to review, since nothing was altered), 30/150 genuinely reviewed and accepted. Evaluated with paired local retrieval (raw vs. reviewed query) + bootstrap CI (2,000 resamples):
 
-**Step 10 (relevance judging) protocol:** 220 blinded query-product pairs (test-split, stopped early from a planned 400, still within the plan's 200-400 range), balanced across ESCI's four relevance grades, labels hidden from the prompt throughout (`manual_gpt/judging_study_blinded.csv` vs. `judging_study_hidden_labels.csv`, joined only after generation). Fixed prompt: `manual_gpt/prompts/judging_v1.md`. **Weighted (linear) Cohen's kappa = 0.478** (moderate agreement, Landis-Koch scale). Two systematic disagreement patterns found with concrete examples, not just a bare confusion matrix: the model is stricter about brand/attribute matching than some ESCI "Exact" labels (e.g. `"supreme brand clothing"` matched to a Champion-brand tee, correctly flagged as a brand mismatch), and applies a stricter literal-accessory standard than ESCI's looser "Complement" convention (e.g. `"bong"` matched to a cookbook titled *"Bong Appétit"* — wordplay, not a real accessory).
+| System | Recall@100 lift | 95% CI | Verdict |
+|---|---:|---|---|
+| BM25 | +0.013 | [0.003, 0.025] | excludes 0 — real |
+| Dense | +0.015 | [0.0004, 0.034] | barely excludes 0 — marginal |
+
+Rewriting helps lexical retrieval more than semantic retrieval, which makes sense mechanistically (BM25 needs literal token overlap; dense embeddings already capture meaning from the raw query).
+
+**Step 10 — relevance judging.** 220 blinded query-product pairs (test-split, stopped early from a planned 400, still within the plan's 200-400 range), balanced across ESCI's four relevance grades, labels hidden from the prompt throughout (`manual_gpt/judging_study_blinded.csv` vs. `judging_study_hidden_labels.csv`, joined only after generation). Fixed prompt: `manual_gpt/prompts/judging_v1.md`. **Weighted (linear) Cohen's kappa = 0.478** (moderate agreement, Landis-Koch scale). Two systematic disagreement patterns found with concrete examples, not just a bare confusion matrix: the model is stricter about brand/attribute matching than some ESCI "Exact" labels (e.g. `"supreme brand clothing"` matched to a Champion-brand tee, correctly flagged as a brand mismatch), and applies a stricter literal-accessory standard than ESCI's looser "Complement" convention (e.g. `"bong"` matched to a cookbook titled *"Bong Appétit"* — wordplay, not a real accessory).
 
 Real infrastructure lessons from building these (both fixed, both now in shared `src/llm_client.py`): a data-loss bug (results weren't saved until a run's very end — now incremental, resumable), and a rate-limit backoff that reacted to failures instead of watching Groq's actual token budget (now proactive).
 
@@ -135,7 +177,12 @@ Real infrastructure lessons from building these (both fixed, both now in shared 
 
 Three arms — A=BM25, B=LambdaMART, C=LambdaMART+rewrite-policy — compared via a simulated click experiment. **Arm C required a genuine rerun** (fresh retrieval + features + LambdaMART scoring on the 150 reviewed rewritten queries, using already-built indices/model, no retraining), not a shortcut. Every simulation parameter (attraction probabilities, click rule, user-correlation mechanism) is an explicit, documented assumption in `configs/project_config.yaml`, not observed behavior — every chart says "SYNTHETIC CLICK SIMULATION" in its title.
 
-Sanity checkpoint passed (CTR rises with relevance strength: A < B ≈ C). Both B and C beat A with real effect sizes (+4.6pp / +6.3pp CTR, 95% CIs exclude zero, BH-significant in **100/100** stability seeds — not a fluke). B-vs-C's CI includes zero and is correctly *not* claimed as a real difference. Sequential O'Brien-Fleming testing correctly declines to stop early even when a naive unadjusted p-value dips below 0.05 partway through (25% info fraction), and CUPED reduces variance ~15-16%. Full writeup, decision table, and charts: `reports/results_log.md` (Steps 11+12 entry), `reports/experiment_decision_table.csv`, `reports/figures/sequential_analysis.png`, `reports/figures/cuped_comparison.png`.
+<p>
+<img src="reports/figures/sequential_analysis.png" alt="Sequential O'Brien-Fleming analysis" width="410">
+<img src="reports/figures/cuped_comparison.png" alt="CUPED variance reduction" width="410">
+</p>
+
+Sanity checkpoint passed (CTR rises with relevance strength: A < B ≈ C). Both B and C beat A with real effect sizes (+4.6pp / +6.3pp CTR, 95% CIs exclude zero, BH-significant in **100/100** stability seeds — not a fluke). B-vs-C's CI includes zero and is correctly *not* claimed as a real difference. Sequential O'Brien-Fleming testing correctly declines to stop early even when a naive unadjusted p-value dips below 0.05 partway through (25% info fraction), and CUPED reduces variance ~15-16%. Full writeup, decision table: `reports/results_log.md` (Steps 11+12 entry), `reports/experiment_decision_table.csv`.
 
 ## Limitations
 
@@ -154,5 +201,12 @@ Sanity checkpoint passed (CTR rises with relevance strength: A < B ≈ C). Both 
 
 ## Author
 
-**Ankit Kumar** — M.Tech, Land and Water Resource Engineering, Indian Institute of Technology, Kharagpur
-Email: ankituday123@gmail.com · LinkedIn: [linkedin.com/in/ankit-kumar-9b3b06228](https://www.linkedin.com/in/ankit-kumar-9b3b06228/)
+<div align="left">
+
+**Ankit Kumar**
+M.Tech, Land and Water Resource Engineering — Indian Institute of Technology, Kharagpur
+
+[![Email](https://img.shields.io/badge/Email-ankituday123%40gmail.com-D14836?logo=gmail&logoColor=white)](mailto:ankituday123@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ankit%20Kumar-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ankit-kumar-9b3b06228/)
+
+</div>
